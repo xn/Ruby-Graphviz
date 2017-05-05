@@ -495,6 +495,10 @@ class GraphViz
           when "LT"
             # Set temperature (temperature factor) to v
             @LT = xValue
+          when "size"
+            @size = xValue
+          when "dpi"
+            @dpi = xValue
           when "nothugly"
             begin
               require 'graphviz/nothugly'
@@ -576,6 +580,8 @@ class GraphViz
         xOtherOptions << "-LU#{@LU}" if @LU
         xOtherOptions << "-LC#{@LC}" if @LC
         xOtherOptions << "-LT#{@LT}" if @LT
+        xOtherOptions << "-Gsize=#{@size}" if @size
+        xOtherOptions << "-Gdpi=#{@dpi}" if @dpi
 
         tmpPath = if IS_JRUBY
           t.path
